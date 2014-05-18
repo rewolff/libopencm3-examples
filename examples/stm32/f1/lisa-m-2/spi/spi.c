@@ -68,8 +68,8 @@ static void spi_setup(void) {
    * Data frame format: 8-bit
    * Frame format: MSB First
    */
-  spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_64, SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
-                  SPI_CR1_CPHA_CLK_TRANSITION_2, SPI_CR1_DFF_8BIT, SPI_CR1_MSBFIRST);
+  spi_init_master(SPI1, SPI_BAUDRATE_CLK_DIV_64, SPI_CLK_TO_1_WHEN_IDLE,
+                  SPI_LATCH_RISING, SPI_FORMAT_8BIT, SPI_MSBFIRST);
 
   /*
    * Set NSS management to software.

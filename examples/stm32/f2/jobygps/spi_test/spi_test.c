@@ -45,8 +45,8 @@ static void spi_setup(void)
 	gpio_set_af(GPIOB, GPIO_AF5, GPIO13 | GPIO14 | GPIO15);
 
 	/* Setup SPI parameters. */
-	spi_init_master(SPI2, SPI_CR1_BAUDRATE_FPCLK_DIV_256, SPI_CR1_CPOL,
-			SPI_CR1_CPHA, SPI_CR1_DFF_8BIT, SPI_CR1_MSBFIRST);
+	spi_init_master(SPI2, SPI_BAUDRATE_CLK_DIV_256, SPI_CLK_TO_1_WHEN_IDLE,
+			SPI_LATCH_RISING, SPI_FORMAT_8BIT, SPI_MSBFIRST);
 	spi_enable_ss_output(SPI2); /* Required, see NSS, 25.3.1 section. */
 
 	/* Finally enable the SPI. */

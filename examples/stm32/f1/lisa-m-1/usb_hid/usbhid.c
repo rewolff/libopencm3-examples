@@ -345,11 +345,11 @@ int main(void)
 	/* Force to SPI mode. This should be default after reset! */
 	SPI2_I2SCFGR = 0;
 	spi_init_master(SPI2,
-			SPI_CR1_BAUDRATE_FPCLK_DIV_256,
-			SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
-			SPI_CR1_CPHA_CLK_TRANSITION_2,
-			SPI_CR1_DFF_8BIT,
-			SPI_CR1_MSBFIRST);
+			SPI_BAUDRATE_CLK_DIV_256,
+			SPI_CLK_TO_1_WHEN_IDLE,
+			SPI_LATCH_RISING,
+			SPI_FORMAT_8BIT,
+			SPI_MSBFIRST);
 	/* Ignore the stupid NSS pin. */
 	spi_enable_software_slave_management(SPI2);
 	spi_set_nss_high(SPI2);
