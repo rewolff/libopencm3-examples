@@ -19,19 +19,19 @@
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/f3/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 
 /* Set STM32 to 64 MHz. */
-static void clock_setup(void)
+void clock_setup(void)
 {
 	rcc_clock_setup_hsi(&hsi_8mhz[CLOCK_64MHZ]);
 
 	/* Enable GPIOE clock. */
-	rcc_periph_clock_enable(RCC_GPIOE);
+	rcc_peripheral_enable_clock(&RCC_AHBENR, RCC_AHBENR_IOPEEN);
 }
 
-static void gpio_setup(void)
+void gpio_setup(void)
 {
 	/* Set GPIO8-11 (in GPIO port E) to 'output push-pull'. */
 	gpio_mode_setup(GPIOE, GPIO_MODE_OUTPUT,
